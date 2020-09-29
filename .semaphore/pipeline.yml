@@ -1,0 +1,31 @@
+# pipeline
+version: "v1.0"
+name: First pipeline example
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Push Image to ECR"
+    task: 
+      env_vars: 
+        - name: AWS_DEFAULT_REGION
+          value: us-east-1
+        - name: ECR_REGISTRY
+          value: 352631681906.dkr.ecr.us-east-1.amazonaws.com/siclo-go-app
+      secrets:
+        - name: AWS              
+      prologue:
+        commands:
+          # Install the most up-to-date AWS cli
+          - sudo pip install awscli
+          - checkout
+          # ecr get-login outputs a login command, so execute that with bash
+          - aws ecr get-login --no-include-email | bash
+      jobs:
+        - name: Push Image
+          commands:
+            - docker build -t siclo-go-app .
+            - docker tag example "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"
+            - docker push "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"                                

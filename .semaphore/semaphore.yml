@@ -81,3 +81,8 @@ blocks:
           - ./bin/webServer 8001 &
           - curl --silent localhost:8001/time | grep "The current time is"
 
+promotions:
+  - name: Dockerize
+    pipeline_file: pipeline.yml
+    auto_promote_on:
+      - result: passed
