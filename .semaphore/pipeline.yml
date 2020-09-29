@@ -27,5 +27,5 @@ blocks:
         - name: Push Image
           commands:
             - docker build -t siclo-go-app .
-            - docker tag example "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"
+            - docker tag siclo-go-app "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"
             - docker push "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"                                
