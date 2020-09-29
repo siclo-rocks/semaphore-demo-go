@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
         - name: siclo-go-app
-          image: "352631681906.dkr.ecr.us-east-1.amazonaws.com/siclo-go-app:${SEMAPHORE_GIT_SHA:0:7}"
+          image: 352631681906.dkr.ecr.us-east-1.amazonaws.com/siclo-go-app:$SEMAPHORE_WORKFLOW_ID

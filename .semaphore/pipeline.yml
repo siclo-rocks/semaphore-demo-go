@@ -27,8 +27,8 @@ blocks:
         - name: Push Image
           commands:
             - docker build -t siclo-go-app .
-            - docker tag siclo-go-app "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"
-            - docker push "${ECR_REGISTRY}:${SEMAPHORE_GIT_SHA:0:7}"
+            - docker tag siclo-go-app "${ECR_REGISTRY}:${SEMAPHORE_WORKFLOW_ID}"
+            - docker push "${ECR_REGISTRY}:${SEMAPHORE_WORKFLOW_ID}"
 
 promotions:
   - name: Deploy to Kubernetes
