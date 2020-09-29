@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: siclo-go-app
+  name: siclo-go-app
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: siclo-go-app
+  template:
+    metadata:
+      labels:
+        app: siclo-go-app
+    spec:
+      containers:
+        - name: siclo-go-app
+          image: 352631681906.dkr.ecr.us-east-1.amazonaws.com/siclo-go-app:$SEMAPHORE_WORKFLOW_ID
