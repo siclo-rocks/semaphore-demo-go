@@ -1,5 +1,7 @@
 # Semaphore demo CI pipeline using Go
 
+[![Build Status](https://siclotest.semaphoreci.com/badges/semaphore-demo-go/branches/master.svg)](https://siclotest.semaphoreci.com/projects/semaphore-demo-go)
+
 This is an example program and CI pipeline showing how to run a Go project on
 Semaphore 2.0.
 
